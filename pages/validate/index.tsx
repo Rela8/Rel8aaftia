@@ -28,14 +28,14 @@ const ValidateUser= ()=>{
     const [data,setData]= useState<string>()
     const [loading,setLoading] = useState(false)
     const checkValidatedMember = async ()=>{
-        if(getTokenorEmptyString()!=='.'){
-            notify('You Have Been Verified already','error')
-            return 
-        }
-        if(!data){
-            notify("Email Can't be blant",'error')
-            return 
-        }
+        // if(getTokenorEmptyString()!=='.'){
+        //     notify('You Have Been Verified already','error')
+        //     return 
+        // }
+        // if(!data){
+        //     notify("Email Can't be blant",'error')
+        //     return 
+        // }
         setLoading(true)
         const resp = await axios.post(`/tenant/auth/ManageMemberValidation/`,{'MEMBERSHIP_NO':data})
         const resp_data:ValidateResponseType =resp.data.data
@@ -71,7 +71,7 @@ const ValidateUser= ()=>{
           <Grid>
               <>
               <TextField 
-              placeholder='MEMBERSHIP NO' 
+              placeholder='Email' 
               onChange={e=>setData(e.target.value)}
               // label='Username'  
               style={{width:'100%'}} size='small'
